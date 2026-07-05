@@ -12,4 +12,6 @@ dependencies = [
     "requests>=2.34.2",
     "seaborn>=0.13.2",
     "tiktoken>=0.13.0",
+    "torch>=2.12.1",
+    "torchvision>=0.27.1",
 ]
