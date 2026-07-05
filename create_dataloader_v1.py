@@ -11,10 +11,8 @@ def create_dataloader_v1(
     drop_last=True,
     num_workers=0,
 ):
-    # Initialize the tokenizer
     tokenizer = tiktoken.get_encoding("gpt2")
 
-    # Create the dataset
     dataset = GPTDatasetV1(
         txt,
         tokenizer,
@@ -22,7 +20,6 @@ def create_dataloader_v1(
         stride,
     )
 
-    # Create the dataloader
     dataloader = DataLoader(
         dataset,
         batch_size=batch_size,

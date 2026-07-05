@@ -7,10 +7,8 @@ class GPTDatasetV1(Dataset):
         self.input_ids = []
         self.target_ids = []
 
-        # Tokenize the entire text
         token_ids = tokenizer.encode(txt)
 
-        # Create overlapping input-target sequences
         for i in range(0, len(token_ids) - max_length, stride):
             input_chunk = token_ids[i:i + max_length]
             target_chunk = token_ids[i + 1:i + max_length + 1]
