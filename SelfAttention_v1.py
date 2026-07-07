@@ -11,21 +11,17 @@ class SelfAttention_v1(nn.Module):
         self.W_value = nn.Parameter(torch.rand(d_in, d_out))
 
     def forward(self, x):
-        # Project the input into Query, Key, and Value spaces
         keys = x @ self.W_key
         queries = x @ self.W_query
         values = x @ self.W_value
 
-        # Compute attention scores
         attn_scores = queries @ keys.T
 
-        # Normalize scores into attention weights
         attn_weights = torch.softmax(
             attn_scores / (keys.shape[-1] ** 0.5),
             dim=-1
         )
 
-        # Compute the weighted sum of values
         context_vec = attn_weights @ values
 
         return context_vec
